@@ -137,5 +137,48 @@ Para crear una imagen de contenedor en  Docker es necesario crear un archivo `Do
     2 rows in set (0.00 sec)    
     ```
 
+    Use `\q` o `exit` para salir de los comandos de MySQL.
+
+    ```
+    mysql> exit
+    Bye
+    ```
+
+5. (Opcionalmente) Use `docker rm -f` para detener y eliminar el contenedor.
+
+    ```
+    docker rm -f mysql-empresa
+    ```
+
 ## Publicando la imagen en Docker Hub
 
+1. Use `docker login` para iniciar sesión (desde línea de comandos) en Docker Hub. Si está usando Docker Desktop y ya ha iniciado sesión, el comando no le debe solicitar datos nuevamente.
+
+    ```
+    docker login
+    ```
+
+    ```
+    Authenticating with existing credentials...
+    Login Succeeded
+
+    Logging in with your password grants your terminal complete access to your account.
+    For better security, log in with a limited-privilege personal access token. Learn more at https://docs.docker.com/go/access-tokens/
+    ```
+
+2. Use `docker tag` para asignar un nombre a la imagen que acaba de crear. Hasta el momento la imagen tiene como nombre `mysql-empresa`. Debe crear una etiqueta para la imagen de forma que tenga un nombre consistente con su usuario en Docker Hub.
+
+
+    En Docker Hub las imágenes incluyen el nombre del usuario en su  nombre: `<nombre-usuario>/<nombre-imagen>:etiqueta`
+
+    Suponga que su usuario es `jchavarr`. Puede crear una etiqueta con el nombre `jchavarr/mysql-empresa:latest`
+
+    ```
+    docker tag mysql-empresa jchavarr/mysql-empresa:latest
+    ```
+
+3. Use `docker push` para subir la imagen a Docker Hub.
+
+    ```
+    docker push jchavarr/mysql-empresa:latest
+    ```
