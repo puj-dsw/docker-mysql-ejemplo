@@ -109,7 +109,7 @@ Tome los scripts de creación de base de datos del proyecto que está realizando
                 context: ./
                 file: ./Dockerfile
                 push: true
-                tags: ${{ secrets.DOCKER_HUB_USERNAME }}/mysql-ejemplo:latest, ${{ secrets.DOCKER_HUB_USERNAME }}/mysql-ejemplo:1
+                tags: ${{ secrets.DOCKER_HUB_USERNAME }}/mysql-trabajo:latest, ${{ secrets.DOCKER_HUB_USERNAME }}/mysql-trabajo:1
         
             - name: Notificación
             run: echo ${{ steps.docker_build.outputs.digest }}
